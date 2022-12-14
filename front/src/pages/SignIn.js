@@ -18,8 +18,8 @@ const baseUrl = "http://127.0.0.1:8000/api/student-login";
 
 export default function SignIn() {
   const [RegisterData, setRegisterData] = useState({
-    Email: "",
-    Password: "",
+    username: "",
+    password: "",
   });
   const navigate = useNavigate();
 
@@ -28,11 +28,13 @@ export default function SignIn() {
   };
 
   const submitForm = () => {
-    const studentFormData = new FormData();
-    studentFormData.append("email", RegisterData.loginEmail);
-    studentFormData.append("password", RegisterData.loginPassword);
+    const RegisterForm = new FormData();
+    console.log("Test: ");
+    console.log(RegisterData.username, RegisterData.password);
+    RegisterForm.append("username", RegisterData.username);
+    RegisterForm.append("password", RegisterData.password);
     try {
-      axios.post(baseUrl, studentFormData).then((res) => {
+      axios.post(baseUrl, RegisterForm).then((res) => {
         if (res.data.bool === true) {
           localStorage.setItem("studentLoginStatus", true);
         }
@@ -76,7 +78,9 @@ export default function SignIn() {
                   <Input
                     w={[100, 200, 300, 400]}
                     placeholder="Email..."
+                    name="username"
                     onChange={handleChange}
+                    value={RegisterData.username}
                     bg="#F2F2F2"
                     p={6}
                     mt={10}
@@ -84,8 +88,10 @@ export default function SignIn() {
                   <Input
                     w={[100, 200, 300, 400]}
                     type="password"
+                    name="password"
                     placeholder="Password..."
                     onChange={handleChange}
+                    value={RegisterData.password}
                     bg="#F2F2F2"
                     p={6}
                   />

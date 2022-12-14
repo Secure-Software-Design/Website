@@ -18,9 +18,9 @@ const baseUrl = "http://127.0.0.1:8000/api/student/";
 
 export default function SignUp() {
   const [RegisterData, setRegisterData] = useState({
-    Email: "",
-    Username: "",
-    Password: "",
+    username: "",
+    password: "",
+    email: "",
   });
   const navigate = useNavigate();
 
@@ -36,13 +36,18 @@ export default function SignUp() {
   };
 
   const submitForm = () => {
-    const studentFormData = new FormData();
-    studentFormData.append("email", RegisterData.Email);
-    studentFormData.append("username", RegisterData.Username);
-    studentFormData.append("password", RegisterData.Password);
+    const RegisterForm = new FormData();
+    console.log(
+      RegisterData.username,
+      RegisterData.password,
+      RegisterData.email
+    );
+    RegisterForm.append("email", RegisterData.email);
+    RegisterForm.append("username", RegisterData.username);
+    RegisterForm.append("password", RegisterData.password);
 
     try {
-      axios.post(baseUrl, studentFormData).then((response) => {
+      axios.post(baseUrl, RegisterForm).then((response) => {
         console.log(response);
       });
     } catch (error) {
@@ -126,20 +131,26 @@ export default function SignUp() {
                   <Input
                     w={[100, 200, 300, 400]}
                     placeholder="Username"
+                    name="username"
                     onChange={handleChange}
+                    value={RegisterData.username}
                     bg="#F2F2F2"
                   />
                   <Input
                     w={[100, 200, 300, 400]}
                     placeholder="Email..."
+                    name="email"
                     onChange={handleChange}
+                    value={RegisterData.email}
                     bg="#F2F2F2"
                   />
                   <Input
                     w={[100, 200, 300, 400]}
                     type="password"
                     placeholder="Password..."
+                    name="password"
                     onChange={handleChange}
+                    value={RegisterData.password}
                     bg="#F2F2F2"
                   />
                   <Box>
