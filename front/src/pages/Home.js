@@ -27,6 +27,10 @@ export default function Home() {
     console.log(matches)
   }
 
+  function getDate(date) {
+    return (`${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`)
+  }
+
 
   return (
     <div className="all">
@@ -38,7 +42,7 @@ export default function Home() {
         {matches !== null ? matches.final.map(match => (
           <div className="match-card">
             <div className="date">
-              {match.date_time}
+              {getDate(match.date_time)}
             </div>
             <div className="match-info">
               <img className="flag" src={match.team1_flag}/>
@@ -61,7 +65,7 @@ export default function Home() {
         {matches !== null ? matches.semi_final.map(match => (
           <div className="match-card">
             <div className="date">
-              {match.date_time}
+              {getDate(match.date_time)}
             </div>
             <div className="match-info">
               <img className="flag" src={match.team1_flag}/>
@@ -88,7 +92,7 @@ export default function Home() {
         {matches !== null ? matches.quarter_final.map(match => (
           <div className="match-card">
             <div className="date">
-              {match.date_time}
+              {getDate(match.date_time)}
             </div>
             <div className="match-info">
               <img className="flag" src={match.team1_flag}/>
@@ -113,7 +117,7 @@ export default function Home() {
         {matches !== null ? matches.round_of_16.map(match => (
           <div className="match-card">
             <div className="date">
-              {match.date_time}
+              {getDate(match.date_time)}
             </div>
             <div className="match-info">
               <img className="flag" src={match.team1_flag}/>
@@ -137,7 +141,7 @@ export default function Home() {
         {matches !== null ? matches.first_stage.map(match => (
           <div className="match-card">
             <div className="date">
-              {match.date_time}
+              {getDate(match.date_time)}
             </div>
             <div className="match-info">
               <img className="flag" src={match.team1_flag}/>
