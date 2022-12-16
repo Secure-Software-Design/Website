@@ -46,7 +46,7 @@ export default function Home() {
             </div>
             <div className="match-info">
               <img className="flag" src={match.team1_flag}/>
-              { match.team1 + " " + match.goal_team1 + " - " + match.goal_team2 + " " + match.team2}
+              { match.team1 + " " + (match.goal_team1 ? match.goal_team1 : "0") + " - " + (match.goal_team2 ? match.goal_team2 : "0") + " " + match.team2}
               <img className="flag" src={match.team2_flag}/>
             </div>
 

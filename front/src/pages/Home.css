@@ -19,6 +19,48 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@keyframes slideInRight {
+  from {
+    transform: translateX(1000px);
+  }
+  to {
+     transform: translateX(0px) scale(1);
+  }
+}
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-1000px);
+  }
+  to {
+     transform: translateX(0px) scale(1);
+  }
+}
+@keyframes slideInBottom {
+  from {
+    transform: translateY(1500px);
+  }
+  to {
+     transform: translateY(0px) scale(1);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+     opacity: 1 scale(1);
+  }
+}
+
+@keyframes colorIn {
+  from {
+    filter: grayscale(100%);
+  }
+  to {
+    filter: grayscale(0%) scale(1);
+  }
+}
+
 body {
   background: linear-gradient(
     90deg,
@@ -47,6 +89,9 @@ body {
 
 
 }
+.date {
+  color: #222831;
+}
 .line {
   background-color: black;
   height: 2px;
@@ -62,8 +107,9 @@ body {
   padding: 16px;
   border-radius: 5px;
   background-color: #194D33;
+  animation: fadeIn 1s;
 }
 .all {
-  background-color: #404258;
+  background-color: #222831;
   color: #EEEEEE;
 }
