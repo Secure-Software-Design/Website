@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
-const baseUrl = "http://127.0.0.1:8000/api/student-login";
+const baseUrl = "http://127.0.0.1:8000/api/user-login";
 
 export default function SignIn() {
   const [RegisterData, setRegisterData] = useState({
@@ -29,20 +29,18 @@ export default function SignIn() {
 
   const submitForm = () => {
     const RegisterForm = new FormData();
-    console.log("Test: ");
-    console.log(RegisterData.username, RegisterData.password);
     RegisterForm.append("username", RegisterData.username);
     RegisterForm.append("password", RegisterData.password);
     try {
       axios.post(baseUrl, RegisterForm).then((res) => {
         if (res.data.bool === true) {
           localStorage.setItem("studentLoginStatus", true);
+          navigate("/home");
         }
       });
     } catch (error) {
       console.log(error);
     }
-    navigate("/home");
   };
 
   const handleChange = (event) => {

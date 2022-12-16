@@ -14,13 +14,14 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
-const baseUrl = "http://127.0.0.1:8000/api/student/";
+const baseUrl = "http://127.0.0.1:8000/api/user/";
 
 export default function SignUp() {
   const [RegisterData, setRegisterData] = useState({
     username: "",
     password: "",
     email: "",
+    status: false,
   });
   const navigate = useNavigate();
 
@@ -49,12 +50,12 @@ export default function SignUp() {
     try {
       axios.post(baseUrl, RegisterForm).then((response) => {
         console.log(response);
+        navigate("/home");
       });
     } catch (error) {
-      console.log(error);
+      console.log(RegisterForm);
       setRegisterData({ status: false });
     }
-    navigate("/home");
   };
 
   return (
